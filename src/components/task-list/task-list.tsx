@@ -3,6 +3,7 @@ import { BarTask } from "../../types/bar-task";
 import { Task } from "../../types/public-types";
 
 export type TaskListProps = {
+  isShowHeader: boolean;
   headerTitle: string;
   headerStartTitle: string;
   headerEndTitle: string;
@@ -49,6 +50,7 @@ export type TaskListProps = {
 };
 
 export const TaskList: React.FC<TaskListProps> = ({
+  isShowHeader,
   headerTitle,
   headerStartTitle,
   headerEndTitle,
@@ -106,7 +108,7 @@ export const TaskList: React.FC<TaskListProps> = ({
 
   return (
     <div ref={taskListRef}>
-      <TaskListHeader {...headerProps} />
+      { isShowHeader && <TaskListHeader {...headerProps} />}
       <div
         ref={horizontalContainerRef}
         className={horizontalContainerClass}
