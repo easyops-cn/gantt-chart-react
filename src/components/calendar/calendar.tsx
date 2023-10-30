@@ -20,6 +20,7 @@ export type CalendarProps = {
   columnWidth: number;
   fontFamily: string;
   fontSize: string;
+  isShowDateText: boolean;
 };
 
 export const Calendar: React.FC<CalendarProps> = ({
@@ -31,6 +32,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   columnWidth,
   fontFamily,
   fontSize,
+  isShowDateText,
 }) => {
   const getCalendarValuesForMonth = () => {
     const topValues: ReactChild[] = [];
@@ -283,7 +285,7 @@ export const Calendar: React.FC<CalendarProps> = ({
         height={headerHeight}
         className={styles.calendarHeader}
       />
-      {bottomValues} {topValues}
+      {isShowDateText && bottomValues} {isShowDateText && topValues}
     </g>
   );
 };

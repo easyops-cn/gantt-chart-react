@@ -39,6 +39,8 @@ export const Gantt: React.FunctionComponent<GanttProps> = (props) => {
     rowHeight = 50,
     ganttHeight = 0,
     viewMode = ViewMode.Day,
+    isShowHeaderDateText = true,
+    isShowHeaderCalendar = true,
     locale = "zh-cn",
     barFill = 60,
     barCornerRadius = 3,
@@ -424,6 +426,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = (props) => {
     fontFamily,
     fontSize,
     rtl,
+    isShowDateText: isShowHeaderDateText,
   };
   const barProps: TaskGanttContentProps = {
     viewMode,
@@ -453,6 +456,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = (props) => {
     onClick
   };
   const tableProps: TaskListProps = {
+    isShowHeader: isShowHeaderCalendar,
     headerTitle,
     headerStartTitle,
     headerEndTitle,
@@ -491,6 +495,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = (props) => {
           ganttHeight={ganttHeight}
           scrollY={scrollY}
           scrollX={scrollX}
+          isShowCalendar={isShowHeaderCalendar}
         />
         {
           isShowTodayTooltip && (
