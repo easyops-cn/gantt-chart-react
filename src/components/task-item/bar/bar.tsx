@@ -13,6 +13,8 @@ export const Bar: React.FC<TaskItemProps> = ({
   rtl,
   onEventStart,
   isSelected,
+  notAllowedToChangeStateDate,
+  notAllowedToChangeEndDate,
 }) => {
   const progressPoint = getProgressPoint(
     +!rtl * task.progressWidth + task.progressX,
@@ -40,7 +42,7 @@ export const Bar: React.FC<TaskItemProps> = ({
         {isDateChangeable && (
           <g>
             {/* left */}
-            <BarDateHandle
+            {!notAllowedToChangeStateDate &&<BarDateHandle
               x={task.x1 + 1}
               y={task.y + 1}
               width={task.handleWidth}
@@ -49,9 +51,9 @@ export const Bar: React.FC<TaskItemProps> = ({
               onMouseDown={e => {
                 onEventStart("start", task, e);
               }}
-            />
+            />}
             {/* right */}
-            <BarDateHandle
+            {!notAllowedToChangeEndDate && <BarDateHandle
               x={task.x2 - task.handleWidth - 1}
               y={task.y + 1}
               width={task.handleWidth}
@@ -60,7 +62,7 @@ export const Bar: React.FC<TaskItemProps> = ({
               onMouseDown={e => {
                 onEventStart("end", task, e);
               }}
-            />
+            />}
           </g>
         )}
         {isProgressChangeable && (
