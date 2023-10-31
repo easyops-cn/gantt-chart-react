@@ -33,6 +33,8 @@ export interface Task {
   leftLabel?: string;
   title?: string;
   isShowTableTooltip?: boolean;
+  notAllowedToChangeStateDate?: boolean;
+  notAllowedToChangeEndDate?: boolean;
 }
 
 export interface EventOption {
